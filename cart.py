@@ -4,12 +4,12 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
-app = Flask(__name__)
+merch = Flask(__name__)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-app.config['SECRET_KEY'] = '_5#y2L"F4Q8z\n\xec]/'
-db = SQLAlchemy(app)
+merch.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+merch.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+merch.config['SECRET_KEY'] = '_5#y2L"F4Q8z\n\xec]/'
+db = SQLAlchemy(merch)
 
 
 # an item
@@ -24,13 +24,13 @@ def __init__(self, name, img, price):
    self.price = price
 
 # show what's in the cart
-@app.route('/cart')
+@merch.route('/cart')
 def show_all():
     return render_template('', items = Product.query.all())
 
 
 # add an item to cart
-@app.route('/add/<product_name>', methods=['POST'])
+@merch.route('/add/<product_name>', methods=['POST'])
 def add_to_cart(product_name):
     product = Product.query.filter(Product.name==product_name)
     db.session.add(product)
@@ -40,7 +40,7 @@ def add_to_cart(product_name):
     return render_template('')
 
 # remove item from cart
-@app.route('/remove/<product_name>', methods = ['GET', 'POST'])
+@merch.route('/remove/<product_name>', methods = ['GET', 'POST'])
 def delete(product_name):
     product = Product.query.filter(Product.name==product_name)
     if product is None:
@@ -50,4 +50,4 @@ def delete(product_name):
     return redirect("")
 
 # WIP: adding/removing users from db, need to consider user info and the total cost for them...?
-@app.route('/newuser', methods = ['GET', 'POST'])
+@merch.route('/newuser', methods = ['GET', 'POST'])
