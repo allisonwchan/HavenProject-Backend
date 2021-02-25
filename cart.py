@@ -49,5 +49,13 @@ def delete(product_name):
     db.session.commit()
     return redirect("")
 
-# WIP: adding/removing users from db, need to consider user info and the total cost for them...?
-@merch.route('/newuser', methods = ['GET', 'POST'])
+# finds the total in the cart -> can be simplified to be written in SQL code
+@merch.route('/total', methods = ['GET'])
+def total():
+    total = 0.00
+    if Product.query.all() is None:
+        return 0.00
+    for item in Product.query.all():
+        total = total + item.price
+    return total
+    
