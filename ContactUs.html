@@ -4,91 +4,78 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>Contact Us</title>
-        <link href="ContactUs.css" rel="stylesheet" type="text/css" />
+        <link href="backend.css" rel="stylesheet" type="text/css" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     </head>
 
     <body>
-
-        <!-- <section>
-            <h1>Contact Us</h1>
-            <p>I would like to send a message to:</p>
-            <form action="mailto:allison.wl.chan@gmail.com" class="yellowbox" method="POST" enctype="text/plain">
-                <input name="fname" type="text" placeholder="...type your first name here">
-                <input name="lname" type="text" placeholder="...type your last name here">
-                <input name="email" type="text" placeholder="...type your email here">
-                <textarea id="msg" name="message" type="text" placeholder="...type your message here"></textarea>
-                <button type="submit" id="submit-button" value="send">Submit</button>
-            </form>
-        </section> -->
-
         <div class="container">
-            <div class="page-title">
-                <p>CONTACT US</p>
-            </div>
-            
-            <div class="fcf-body">
 
-                
+            <div class="page-title">
+              <p class = "rectangle">CONTACT US</p>
+            </div>
+
+            <div class="fcf-body">
+              <div class="form-header">
+                <p>I would like to send a message to:</p>
+                <div class ="button">
+                    <button id = "DavisBranchButton" style ="margin: 5px;">Davis Branch</button>
+                    <button id = "NDHSBranchButton">NDHS Branch</button> 
+                  </div>
+                </div>
             
                 <div id="fcf-form">
-                    <div class="form-header">
-                        <h2>I would like to send a message to:</h2>
-                        
-                        <div class="colored-boxes">
-                            <div class="blue-box">
-                                <p>Davis Branch</p>
-                            </div>
-    
-                            <div class="purple-box">
-                                <p>NDHS Branch</p>
-                            </div>
+                
+                <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-form-process.php">
+        
+                    <div class="fcf-form-group">
+                        <label for="Name" class="fcf-label">Name</label>
+                        <div class="fcf-input-group">
+                            <input type="text" id="Name" name="Name" class="fcf-form-control" required>
                         </div>
                     </div>
 
-                    <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-example.php">
-                        
-                        <div class="fcf-form-group">
-                            <label for="Name" class="fcf-label">Name</label>
-                            <div class="fcf-input-group">
-                                <input type="text" id="Name" name="Name" class="fcf-form-control" required>
-                            </div>
+                    <div class="fcf-form-group">
+                        <label for="Email" class="fcf-label">Email</label>
+                        <div class="fcf-input-group">
+                            <input type="email" id="Email" name="Email" class="fcf-form-control" required>
                         </div>
-                
-                        <div class="fcf-form-group">
-                            <label for="Email" class="fcf-label">Email</label>
-                            <div class="fcf-input-group">
-                                <input type="email" id="Email" name="Email" class="fcf-form-control" required>
-                            </div>
-                        </div>
-                
-                        <div class="fcf-form-group">
-                            <label for="Message" class="fcf-label">Subject</label>
-                            <div class="fcf-input-group">
-                                <input id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="fcf-form-group">
-                            <label for="Message" class="fcf-label">Message</label>
-                            <div class="fcf-input-group">
-                                <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
-                            </div>
+                    <div class="fcf-form-group">
+                        <label for="Subject" class="fcf-label">Subject</label>
+                        <div class="fcf-input-group">
+                            <input type="text" id="Subject" name="Subject" class="fcf-form-control" required>
                         </div>
-                
-                        <div class="fcf-form-group">
-                            <div class="wrapper">
-                                <button type="submit" id="fcf-button" name="btn-send"
-                                class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Submit</button>
-                            </div>
+                    </div>
+
+                    <div class="fcf-form-group">
+                        <label for="Message" class="fcf-label">Message</label>
+                        <div class="fcf-input-group">
+                            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
                         </div>
-                
-                
-                    </form>
+                    </div>
+
+                    <div class="fcf-form-group">
+                        <div class="wrapper">
+                            <button type="submit" id="fcf-button" 
+                            class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+                <div class = "boxes"> 
+                    <div class = "box1">
+                        <p>box1</p>
+                    </div>
+                    <div class = "box2">
+                        <p>box2</p>
+                    </div>
                 </div>
+              </div>
             
             </div>
         </div>  
-        </body>
+    </body>
 </html>

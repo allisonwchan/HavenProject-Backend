@@ -1,12 +1,9 @@
 <?php
-
 if (isset($_POST['Email'])) {
 
     // EDIT THE 2 LINES BELOW AS REQUIRED
-    // $email_to = "you@yourdomain.com";
-    $email_to = "allison.wl.chan@gmail.com";
+    $email_to = "allison.wl.chan@gmail.com"; // where the email goes after hitting submit
     $email_subject = "New form submissions";
-    // $emai_from = "awchen65@gmail.com";
 
     function problem($error)
     {
@@ -18,14 +15,14 @@ if (isset($_POST['Email'])) {
     }
 
     // validation expected data exists
-    // if (
-    //     !isset($_POST['Name']) ||
-    //     !isset($_POST['Email']) ||
-    //     !isset($_POST['Subject']) || 
-    //     !isset($_POST['Message'])
-    // ) {
-    //     problem('We are sorry, but there appears to be a problem with the form you submitted.');
-    // }
+    if (
+        !isset($_POST['Name']) ||
+        !isset($_POST['Email']) ||
+        !isset($_POST['Subject']) ||
+        !isset($_POST['Message'])
+    ) {
+        problem('We are sorry, but there appears to be a problem with the form you submitted.');
+    }
 
     $name = $_POST['Name']; // required
     $email = $_POST['Email']; // required
@@ -43,6 +40,10 @@ if (isset($_POST['Email'])) {
 
     if (!preg_match($string_exp, $name)) {
         $error_message .= 'The Name you entered does not appear to be valid.<br>';
+    }
+
+    if (strlen($subject) < 2) {
+        $error_message .= 'The Subject you entered do not appear to be valid.<br>';
     }
 
     if (strlen($message) < 2) {
@@ -63,6 +64,7 @@ if (isset($_POST['Email'])) {
 
     $email_message .= "Name: " . clean_string($name) . "\n";
     $email_message .= "Email: " . clean_string($email) . "\n";
+    $email_message .= "Subject: " . clean_string($subject) . "\n";
     $email_message .= "Message: " . clean_string($message) . "\n";
 
     // create email headers
